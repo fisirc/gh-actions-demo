@@ -5,6 +5,7 @@ on:
 jobs:
   label_issue:
     runs-on: ubuntu-latest
+    permissions: write-all
     if: github.event.action == 'opened'
     steps:
       - name: Add label
