@@ -5,6 +5,7 @@ on:
 jobs:
   comment_issue:
     runs-on: ubuntu-latest
+    permissions: write-all
     steps:
       - name: Send opened comment
         uses: actions/github-script@v7
