@@ -1,0 +1,32 @@
+name: Fundamentals
+
+on:
+  push:
+    branches: [main, feat/*]
+
+jobs:
+  sayhello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Waving
+        run: echo Hello world 👋👋👋👋
+
+      - name: Install cowsay
+        run: |
+          sudo apt update
+          sudo apt install -y --no-install-recommends cowsay
+
+      - name: Run cowsay
+        id: print-tree
+        run: |
+          cowsay_output="$(cowsay Hello world 👋👋👋)"
+          echo ${cowsay_output}
+          echo "TREE<<EOF" >> "$GITHUB_OUTPUT"
+          echo "${cowsay_output}" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+      - name: Say hello from Discord
+        uses: sebastianpopp/discord-action@releases/v2
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          message: "```${{ steps.print-tree.outputs.TREE }}```"
