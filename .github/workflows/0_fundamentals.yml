@@ -1,8 +1,7 @@
 name: Fundamentals
 
 on:
-  push:
-    branches: [main, feat/*]
+  workflow_dispatch:
 
 jobs:
   sayhello:
