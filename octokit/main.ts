@@ -5,6 +5,3 @@ const octokit = new Octokit({
     timeZone: 'America/Lima',
     baseUrl: 'https://api.github.com',
 });
-
-octokit.rest.issues.createComment({
-})
